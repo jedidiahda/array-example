@@ -1,0 +1,31 @@
+<html>
+    
+    <head>
+    </head>
+    
+    <body>
+    
+        <p id="demo"></p>
+    
+        <script>
+            function myFunction(num) {
+                var bin = Number(num).toString(2);
+                var longest = "";
+                var hasLongest = false;
+                var i = 1;
+                while(i <= bin.length - 3){
+                    var str = "1" + Math.pow(10,i).toString().substring(1) + "1";
+                    if(bin.indexOf(str)){
+                        longest = str;
+                    }
+                    i++;
+                }
+                return longest.length;
+            }
+
+            document.getElementById("demo").innerHTML = myFunction(999);
+        </script>
+    
+    </body>
+    
+    </html>

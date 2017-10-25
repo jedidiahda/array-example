@@ -1,0 +1,68 @@
+<html>
+
+<head>
+</head>
+
+<body>
+
+    <p id="demo"></p>
+
+    <script>
+        function myFunction(arr) {
+            var count = 0,
+                len = arr.length,
+                next = 0,
+                down = 0,
+                prev = 0,
+                up = 0,
+                total = 0;
+
+            if (len == 1) count = 1;
+            else {
+                var cal = len / 2;
+                count = len % 2 > 0 ? parseInt(cal) + 1 : parseInt(cal);
+            }
+
+            for (var c = 0; c < count; c++) {
+                var n = c, nl = arr[0].length - 1 - c;
+                while (n <= nl) {
+                    next += arr[c][n];
+                    n++;
+                }
+
+                var d = c + 1, dl = len - 1 - c;
+                while (d <= dl) {
+                    down += arr[d][len - c];
+                    d++;
+                }
+
+                var p = arr[0].length - 1 - (c + 1),
+                    index = len - 1 - c;
+                if (index > c) {
+                    while (p >= c) {
+                        prev += arr[index][p];
+                        p--;
+                    }
+                }
+
+                var u = len - 1 - (c+1); 
+                while(u > c){
+                    up += arr[u][c]; 
+                    u--;
+                }
+            }
+
+            total = next + down + prev + up;
+            return total;
+        }
+        var arr = [
+            [1, 1, 1, 1, 1], //[0]
+            [1, 1, 1, 1, 1], //[0]
+            [1, 1, 1, 1, 1], //[0]
+        ];
+        document.getElementById("demo").innerHTML = myFunction(arr);
+    </script>
+
+</body>
+
+</html>
